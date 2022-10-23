@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <title>Trial Unit</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="top">
+          <div class="title-wrapper">
+            <h1 class="title">選擇試算單位</h1>
+            <button id="trial-unit-next" class="next" disabled>繼續</button>
+          </div>
+        </div>
+        <div class="inner">
+          <div id="radio-group" class="radio-group">
+            <div class="unit-group">
+              <input
+                id="radio-year"
+                type="radio"
+                name="unit"
+                value="year"
+                class="year"
+                hidden
+              />
+              <label for="radio-year" class="unit">年</label>
+            </div>
+            <div class="unit-group">
+              <input
+                id="radio-month"
+                type="radio"
+                name="unit"
+                value="month"
+                class="month"
+                hidden
+              />
+              <label for="radio-month" class="unit">月</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
