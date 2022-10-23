@@ -1,3 +1,29 @@
+class RangeSlider {
+  constructor(qs) {
+    this.input = document.querySelector(qs);
+    this.input?.addEventListener("input", this.update.bind(this));
+    this.update();
+  }
+  update(e) {
+    console.log("here");
+    let value = this.input.value;
+
+    // when manually set
+    if (e) value = e.target?.value;
+    // when initiated
+    else this.input.value = value;
+
+    const min = this.input.min || 0;
+    const max = this.input.max || 100;
+    const percentRaw = ((value - min) / (max - min)) * 100;
+    const percent = +percentRaw.toFixed(2);
+    const handle = 1.5 * (1 - percent / 100) - 1.125;
+    const percentStyle = `calc(${percent}% + ${handle}em)`;
+
+    this.input.parentElement?.style.setProperty("--percent", percentStyle);
+  }
+}
+
 const YEAR_START = 2000;
 const YEAR_END = 2022;
 const AMOUNT_MIN = 10000;
@@ -34,12 +60,15 @@ const $ = (selector) => {
 
 const zeroPad = (num, places) => String(num).padStart(places, "0");
 const useYearAndMonth = (s) => s.split("-");
+const stepOne = $("#step-1");
+const stepTwo = $("#step-2");
+const stepThree = $("#step-3");
 
 let state = {
   unit: localStorage.getItem("unit") || "year", // 'year', 'month'
   step: 1,
   start: parseInt(localStorage.getItem("start")) || YEAR_START, // '2000'
-  range: parseInt(localStorage.getItem("range")) || YEAR_END - YEAR_START, // '2022'
+  range: parseInt(localStorage.getItem("range")) || 0, // '2022'
   from: localStorage.getItem("from") || `${YEAR_START}-01`, // '2000-01'
   to: localStorage.getItem("to") || `${YEAR_END}-12`, // '2022-12'
   amount: parseInt(localStorage.getItem("amount")) || AMOUNT_MIN, // '10000'
@@ -53,9 +82,10 @@ if (!window.location.href.endsWith("trialUnit.html")) {
 
 // Step 1. Choose a unit -------------------------------------------------------
 if (window.location.href.endsWith("trialUnit.html")) {
-  const radioGroup = $("#radio-group");
   const trialUnitNext = $("#trial-unit-next");
   state.step = 1;
+  stepOne.style.backgroundColor = "#ffffff";
+  stepOne.style.color = "#ffffff";
 
   if (localStorage.getItem("unit") === null) {
     localStorage.setItem("unit", state.unit);
@@ -72,7 +102,28 @@ if (window.location.href.endsWith("trialUnit.html")) {
     trialUnitNext.disabled = false;
   }
 
-  radioGroup.addEventListener("change", (e) => {
+  const yearLabel = $("#radio-year-label");
+  const monthLabel = $("#radio-month-label");
+
+  $("#unit-border-year").addEventListener("click", (e) => {
+    yearLabel.style.backgroundColor = "#d9d9d9";
+    monthLabel.style.backgroundColor = "transparent";
+  });
+  $("#unit-border-month").addEventListener("click", (e) => {
+    yearLabel.style.backgroundColor = "transparent";
+    monthLabel.style.backgroundColor = "#d9d9d9";
+  });
+
+  $("#unit-border-year").addEventListener("change", (e) => {
+    if (e.target.nodeName.toLowerCase() === "input") {
+      state.unit = e.target.value;
+      localStorage.setItem("unit", state.unit);
+      if (state.unit !== null) {
+        $("#trial-unit-next").disabled = false;
+      }
+    }
+  });
+  $("#unit-border-month").addEventListener("change", (e) => {
     if (e.target.nodeName.toLowerCase() === "input") {
       state.unit = e.target.value;
       localStorage.setItem("unit", state.unit);
@@ -101,6 +152,11 @@ if (window.location.href.endsWith("periodOfYear.html")) {
   const inputYearRange = $("#year-range");
   state.step = 2;
 
+  stepOne.style.backgroundColor = "#a6a6a6";
+  stepOne.style.color = "#ffffff";
+  stepTwo.style.backgroundColor = "#ffffff";
+  stepTwo.style.color = "#ffffff";
+
   localStorage.setItem("start", state.start);
   localStorage.setItem("range", state.range);
   if (state.start !== null && state.range !== null) {
@@ -115,15 +171,17 @@ if (window.location.href.endsWith("periodOfYear.html")) {
   }
   divEndYear.textContent = state.start + state.range;
 
-  inputYearRange.min = 1;
+  inputYearRange.min = 0;
   inputYearRange.max = YEAR_END - state.start;
   selectStartYear.value = state.start;
   inputYearRange.value = state.range;
 
+  const yearRange = new RangeSlider("#year-range");
+
   selectStartYear.addEventListener("change", (e) => {
     state.start = parseInt(e.target.value);
     localStorage.setItem("start", state.start);
-    state.range = 1;
+    state.range = 0;
     inputYearRange.value = state.range;
     inputYearRange.max = YEAR_END - state.start;
     localStorage.setItem("range", state.range);
@@ -148,8 +206,8 @@ if (window.location.href.endsWith("periodOfYear.html")) {
 
 // Step 2b. Choose a period of month -------------------------------------------
 if (window.location.href.endsWith("periodOfMonth.html")) {
-  const periodYearAndMonthNext = $("#period-year-and-month-next");
-  const periodYearAndMonthPrev = $("#period-year-and-month-prev");
+  const periodYearAndMonthNext = $("#period-month-next");
+  const periodYearAndMonthPrev = $("#period-month-prev");
   const selectStartYear = $("#start-year");
   const selectEndYear = $("#end-year");
   const inputStartMonth = $("#start-month");
@@ -162,6 +220,12 @@ if (window.location.href.endsWith("periodOfMonth.html")) {
   let endYear = YEAR_END;
   let endMonth = 12;
   state.step = 2;
+
+  stepOne.style.backgroundColor = "#a6a6a6";
+  stepOne.style.color = "#ffffff";
+  stepTwo.style.backgroundColor = "#ffffff";
+  stepTwo.style.color = "#ffffff";
+
   state.from = `${startYear}-${zeroPad(startMonth, 2)}`;
   state.to = `${endYear}-${zeroPad(endMonth, 2)}`;
 
@@ -195,6 +259,9 @@ if (window.location.href.endsWith("periodOfMonth.html")) {
   divStartMonth.textContent = monthNames[zeroPad(startMonth, 2)];
   divEndMonth.textContent = monthNames[zeroPad(endMonth, 2)];
 
+  const startMonthRange = new RangeSlider("#start-month");
+  const endMonthRange = new RangeSlider("#end-month");
+
   selectStartYear.addEventListener("change", (e) => {
     startYear = parseInt(e.target.value);
     if (startYear > endYear) {
@@ -215,6 +282,8 @@ if (window.location.href.endsWith("periodOfMonth.html")) {
       localStorage.setItem("from", from);
       state.from = from;
     }
+    startMonthRange.update();
+    endMonthRange.update();
 
     from = `${startYear}-${zeroPad(startMonth, 2)}`;
     localStorage.setItem("from", from);
@@ -241,6 +310,8 @@ if (window.location.href.endsWith("periodOfMonth.html")) {
       localStorage.setItem("from", from);
       state.from = from;
     }
+    startMonthRange.update();
+    endMonthRange.update();
 
     to = `${endYear}-${zeroPad(endMonth, 2)}`;
     localStorage.setItem("to", to);
@@ -251,13 +322,15 @@ if (window.location.href.endsWith("periodOfMonth.html")) {
 
     if (startYear === endYear && startMonth >= endMonth) {
       if (endMonth === 12 && startMonth === 12) {
-        startMonth = 11;
+        // startMonth = 11;
         inputStartMonth.value = startMonth;
       } else {
-        endMonth = startMonth + 1;
+        endMonth = startMonth;
         inputEndMonth.value = endMonth;
         divEndMonth.textContent = monthNames[zeroPad(endMonth, 2)];
       }
+      startMonthRange.update();
+      endMonthRange.update();
 
       to = `${endYear}-${zeroPad(endMonth, 2)}`;
       localStorage.setItem("to", to);
@@ -274,13 +347,15 @@ if (window.location.href.endsWith("periodOfMonth.html")) {
 
     if (startYear === endYear && startMonth >= endMonth) {
       if (endMonth === 1 && startMonth === 1) {
-        endMonth = 2;
+        // endMonth = 2;
         inputEndMonth.value = endMonth;
       } else {
-        startMonth = endMonth - 1;
+        startMonth = endMonth;
         inputStartMonth.value = startMonth;
         divStartMonth.textContent = monthNames[zeroPad(startMonth, 2)];
       }
+      startMonthRange.update();
+      endMonthRange.update();
 
       from = `${startYear}-${zeroPad(startMonth, 2)}`;
       localStorage.setItem("from", from);
@@ -307,6 +382,13 @@ if (window.location.href.endsWith("periodOfMonth.html")) {
 if (window.location.href.endsWith("initialAmount.html")) {
   state.step = 3;
 
+  stepTwo.style.backgroundColor = "#a6a6a6";
+  stepTwo.style.color = "#ffffff";
+  stepOne.style.backgroundColor = "#a6a6a6";
+  stepOne.style.color = "#ffffff";
+  stepThree.style.backgroundColor = "#ffffff";
+  stepThree.style.color = "#ffffff";
+
   const amountNext = $("#initial-amount-next");
   const amountPrev = $("#initial-amount-prev");
   const amountRange = $("#initial-amount-range");
@@ -324,16 +406,14 @@ if (window.location.href.endsWith("initialAmount.html")) {
   localStorage.setItem("amount", state.amount);
   amountNext.disabled = false;
 
-  amountInput.addEventListener("change", (e) => {
-    if (e.target.value < AMOUNT_MIN) {
-      e.target.value = AMOUNT_MIN;
-    } else if (e.target.value > AMOUNT_MAX) {
-      e.target.value = AMOUNT_MAX;
-    }
+  const initialAmountRange = new RangeSlider("#initial-amount-range");
+
+  amountInput.addEventListener("input", (e) => {
     state.amount = parseInt(e.target.value);
     localStorage.setItem("amount", state.amount);
     amountRange.value = state.amount;
     amountNext.disabled = false;
+    initialAmountRange.update();
   });
   amountRange.addEventListener("input", (e) => {
     state.amount = parseInt(e.target.value);
