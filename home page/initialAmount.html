@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Initial Amount</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="top">
+          <div class="title-wrapper">
+            <button id="initial-amount-prev" class="prev">返回</button>
+            <h1 class="title">選擇/輸入 試算金額</h1>
+            <button id="initial-amount-next" class="next" disabled>提交</button>
+          </div>
+        </div>
+        <div class="inner">
+          <div class="amount-wrapper">
+            <input
+              type="number"
+              id="initial-amount-input"
+              name="initial-amount-input"
+            />
+            <div class="group">
+              <span>$</span>
+              <input
+                type="range"
+                class="slider ml-1"
+                id="initial-amount-range"
+                name="initial-amount-range"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
