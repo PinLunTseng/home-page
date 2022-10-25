@@ -1,0 +1,811 @@
+/*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+
+/*
+Document
+========
+*/
+
+/**
+Use a better box model (opinionated).
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+1. Correct the line height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size (opinionated).
+*/
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  tab-size: 4; /* 3 */
+}
+
+/*
+Sections
+========
+*/
+
+/**
+1. Remove the margin in all browsers.
+2. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+*/
+
+body {
+  margin: 0;
+  /* font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; */
+}
+
+/*
+Grouping content
+================
+*/
+
+/**
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+}
+
+/*
+Text-level semantics
+====================
+*/
+
+/**
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr[title] {
+  text-decoration: underline dotted;
+}
+
+/**
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the odd 'em' font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo,
+    monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/**
+Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+Tabular data
+============
+*/
+
+/**
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+}
+
+/*
+Forms
+=====
+*/
+
+/**
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+Correct the inability to style clickable types in iOS and Safari.
+*/
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+Remove the inner border and padding in Firefox.
+*/
+
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+Restore the focus styles unset by the previous rule.
+*/
+
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+Remove the additional ':invalid' styles in Firefox.
+See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/**
+Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
+
+legend {
+  padding: 0;
+}
+
+/**
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to 'inherit' in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Interactive
+===========
+*/
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Reset default button
+*/
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/* font --------------------------------------------------------------------- */
+@font-face {
+  font-family: "Microsoft JhengHei";
+  src: url(./Microsoft-JhengHei.ttf);
+}
+/* /end font ---------------------------------------------------------------- */
+
+:root {
+  --thumb-border-width: 0.25rem;
+  --default-border: #a6a6a6;
+  --slider-width: 30rem;
+  --slider-height: 0.375rem;
+  --slider-thumb-size: 0.75rem;
+  --bg-thumb: #ffffff;
+  --bg-track: #aba6a6;
+  --gradient: linear-gradient(90deg, #000, #000 6em, #000 12em);
+  --percent: 50%;
+}
+
+/* background --------------------------------------------------------------- */
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #808080;
+  z-index: -20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif;
+}
+.bg-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30vh;
+  background-color: #e6e6e6;
+  z-index: -10;
+}
+/* /end background ---------------------------------------------------------- */
+
+/* view --------------------------------------------------------------------- */
+.template {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.917rem;
+  padding-bottom: 0.917rem;
+  z-index: -10;
+  /* background-color: aquamarine; */
+}
+.template::before {
+  position: absolute;
+  content: "";
+  width: 98%;
+  height: 98%;
+  display: inline-block;
+  border: 2pt solid black;
+  border-radius: 57pt;
+}
+.template::after {
+  position: absolute;
+  content: "";
+  width: 97.5%;
+  height: 97%;
+  display: inline-block;
+  border: 2pt solid black;
+  border-radius: 55pt;
+}
+/* /end view ---------------------------------------------------------------- */
+
+/* content ------------------------------------------------------------------ */
+main {
+  width: 91vw;
+  height: 80vh;
+  background-color: white;
+  border-radius: 4rem;
+  margin: 0 auto;
+  padding-top: 15rem;
+}
+footer {
+  width: 187pt;
+  height: 17pt;
+  margin-top: 28pt;
+}
+h1 {
+  margin-top: 3pt;
+  margin-bottom: 3pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  color: #ffffff;
+  height: 46pt;
+  width: 100%;
+}
+h1.unit-title {
+  padding-left: 92pt;
+}
+.title-wrapper {
+  display: flex;
+  align-items: center;
+}
+.title-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  /* margin-right: -18pt; */
+}
+.title-top {
+  height: 3pt;
+  width: 100%;
+  background-color: #000000;
+  align-self: start;
+}
+.title-top-both {
+  height: 3pt;
+  width: 100%;
+  align-self: start;
+  display: flex;
+  gap: 3pt;
+}
+.title-top-both span {
+  height: 100%;
+}
+.title-top-both span:nth-of-type(3) {
+  width: 90%;
+  background-color: #767171;
+}
+.title-top-both span:nth-of-type(2) {
+  width: 7%;
+  background-color: #afabab;
+}
+.title-top-both span:nth-of-type(1) {
+  width: 3%;
+  background-color: #d0cfcf;
+}
+.title-bottom {
+  height: 3pt;
+  width: 100%;
+  align-self: start;
+  display: flex;
+  gap: 3pt;
+}
+.title-bottom span {
+  height: 100%;
+}
+.title-bottom span:nth-of-type(1) {
+  width: 90%;
+  background-color: #767171;
+}
+.title-bottom span:nth-of-type(2) {
+  width: 7%;
+  background-color: #afabab;
+}
+.title-bottom span:nth-of-type(3) {
+  width: 3%;
+  background-color: #d0cfcf;
+}
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title-right {
+  clip-path: polygon(0 0, 0 100%, 50% 50%);
+  background-color: #000000;
+  height: 46pt;
+  width: 45pt;
+  margin-right: -40pt;
+}
+.title-left {
+  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+  background-color: #000000;
+  height: 46pt;
+  width: 45pt;
+  margin-left: -40pt;
+}
+button .step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 92pt;
+  height: 46pt;
+  font-size: 14pt;
+  font-weight: bold;
+  background-color: #a6a6a6;
+}
+button.next.step-bg {
+  clip-path: polygon(78% 0%, 100% 50%, 78% 100%, 0% 100%, 22% 50%, 0% 0%);
+}
+button.next .step {
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+button.prev.step-bg {
+  clip-path: polygon(100% 0%, 78% 50%, 100% 100%, 22% 100%, 0% 50%, 22% 0%);
+}
+button.prev .step {
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+}
+button.step-bg {
+  width: 104pt;
+  height: 46pt;
+  display: inline-block;
+  background-color: #000000;
+}
+.unit-border {
+  --d: 4deg; /* distance between dashes */
+  --n: 30; /* number of dashes */
+  --c: #000; /* color of dashes */
+  --b: 4px; /* control the thickness of border*/
+  --m: 60deg; /* the masked part */
+  --r: 0deg; /* rotation */
+
+  width: 160px;
+  display: inline-block;
+  border-radius: 50%;
+  transform: rotate(var(--r));
+  background: repeating-conic-gradient(
+    var(--c) 0 calc(360deg / var(--n) - var(--d)),
+    transparent 0 calc(360deg / var(--n))
+  );
+  -webkit-mask: conic-gradient(#fff 0 var(--m), transparent 0 360deg),
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - var(--b) - 1px),
+      #fff calc(100% - var(--b)) calc(100% - 1px),
+      transparent
+    );
+  -webkit-mask-composite: destination-out;
+  mask: conic-gradient(#fff 0 var(--m), transparent 0 360deg),
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - var(--b)),
+      #fff calc(100% - var(--b)) 100%,
+      transparent
+    );
+  mask-composite: exclude;
+}
+.unit-border-year:nth-of-type(1) {
+  --d: 0deg; /* distance between dashes */
+  --n: 2; /* number of dashes */
+  --c: #000; /* color of dashes */
+  --m: 180deg; /* the masked part */
+  --r: 225deg; /* rotation */
+  position: absolute;
+}
+.unit-border-year:nth-of-type(2) {
+  --d: 8deg; /* distance between dashes */
+  --n: 12; /* number of dashes */
+  --c: #000; /* color of dashes */
+  --m: 180deg; /* the masked part */
+  --r: 45deg; /* rotation */
+}
+.unit-border-month:nth-of-type(1) {
+  --d: 0deg; /* distance between dashes */
+  --n: 2; /* number of dashes */
+  --c: #000; /* color of dashes */
+  --m: 180deg; /* the masked part */
+  --r: 45deg; /* rotation */
+  position: absolute;
+}
+.unit-border-month:nth-of-type(2) {
+  --d: 8deg; /* distance between dashes */
+  --n: 12; /* number of dashes */
+  --c: #000; /* color of dashes */
+  --m: 180deg; /* the masked part */
+  --r: 225deg; /* rotation */
+}
+
+/* keep the element square */
+.unit-border::before {
+  content: "";
+  display: block;
+  /* position: absolute; */
+  padding-top: 100%;
+}
+.unit-border-group {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+.unit-border-group::before {
+  position: absolute;
+  z-index: 20;
+  content: "";
+  width: 153px;
+  height: 153px;
+  display: block;
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin-top: 3.5px;
+  margin-left: 3.5px;
+}
+.unit-border-group::after {
+  position: absolute;
+  z-index: 30;
+  content: "";
+  width: 140px;
+  height: 140px;
+  display: block;
+  top: 6.5%;
+  left: 6.5%;
+  /* background-color: #d9d9d9; */
+  border-radius: 50%;
+}
+.unit-label {
+  position: absolute;
+  top: 12%;
+  left: 14%;
+  z-index: 100;
+  font-size: 54pt;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 20px;
+}
+#radio-group {
+  display: flex;
+  gap: 120pt;
+  margin: 0 auto;
+  margin-top: 40pt;
+}
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* /end content ------------------------------------------------------------- */
+
+.group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10pt;
+}
+/* period of year */
+.inner {
+  margin-top: 100px;
+  display: flex;
+  gap: 10pt;
+  align-items: center;
+  justify-content: center;
+}
+.period-year-slider {
+  width: var(--slider-width);
+  height: var(--slider-height);
+}
+.period-month-slider {
+  width: var(--slider-width);
+  height: var(--slider-height);
+}
+.initial-amount-slider {
+  width: var(--slider-width);
+  height: var(--slider-height);
+}
+#end-year {
+  width: 5.583rem;
+  height: 1.583rem;
+  border: 0.125rem solid var(--default-border);
+  border-radius: 0.313rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom-select {
+  display: inline-block;
+  position: relative;
+}
+.custom-select select {
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  /* removes the fucking native down arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
+
+  border: 0.125rem solid var(--default-border);
+  width: 5.583rem;
+  height: 1.583rem;
+  padding-right: 1.333rem;
+  padding-left: 0.167rem;
+  border-radius: 0.313rem;
+}
+.custom-select::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10.4px 6px 0 6px;
+  border-color: #000000 transparent transparent transparent;
+}
+.custom-select::before {
+  content: "";
+  position: absolute;
+  width: 0.125rem;
+  height: 1.583rem;
+  background-color: var(--default-border);
+  right: 1.333rem;
+}
+.month-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 0.083rem;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.667rem;
+}
+.font-bold {
+  font-weight: bold;
+}
+.font-label {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.mt-10 {
+  margin-top: 10pt;
+}
+input {
+  z-index: 100;
+}
+
+/* step indicator */
+.step-indicator-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.step-indicator-bar {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: #a6a6a6;
+}
+.step-indicator-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #a6a6a6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a6a6a6;
+  font-size: 16px;
+  font-weight: bold;
+  border: 3px solid #a6a6a6;
+  z-index: 10;
+}
+
+.year-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ipuut range */
+.custom-input {
+  background: var(--bg-track) var(--gradient) no-repeat;
+  background-size: var(--percent) 100%;
+  border-radius: 0.375em;
+  height: 0.375em;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.custom-input:focus {
+  outline: transparent;
+}
+/* WebKit */
+.custom-input::-webkit-slider-thumb {
+  background-color: var(--bg-thumb);
+  border: var(--thumb-border-width) solid black;
+  border-radius: 50%;
+  width: 1.75em;
+  height: 1.75em;
+  -webkit-appearance: none;
+  appearance: none;
+}
+/* Firefox */
+.custom-input::-moz-range-thumb {
+  background-color: var(--bg-thumb);
+  border: var(--thumb-border-width) solid black;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+#initial-amount-input {
+  width: 10rem;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 2px solid var(--default-border);
+}
+
+#initial-amount-group {
+  margin-bottom: 1rem;
+}
+#initial-amount-group span {
+  font-weight: bold;
+}
