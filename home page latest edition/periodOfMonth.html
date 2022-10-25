@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <title>Period of Month</title>
+  </head>
+  <body>
+    <div class="bg-footer"></div>
+    <div class="template"></div>
+    <main>
+      <div class="title-wrapper">
+        <div class="button-wrapper">
+          <button id="period-month-prev" class="step-bg prev">
+            <span class="step">返回</span>
+          </button>
+          <span class="title-left"></span>
+        </div>
+        <div class="title-group">
+          <div class="title-top-both">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <h1>選擇試算期間</h1>
+          <div class="title-bottom">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="button-wrapper">
+          <span class="title-right"></span>
+          <button id="period-month-next" class="step-bg next" disabled>
+            <span class="step">繼續</span>
+          </button>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="inner">
+          <div class="input-group">
+            <div class="group">
+              <div class="year-group">
+                <label for="start-year" class="font-label">起始年份</label>
+                <div class="custom-select">
+                  <select
+                    name="start-year"
+                    id="start-year"
+                    type="number"
+                  ></select>
+                </div>
+              </div>
+              <div class="month-group">
+                <label for="start-month" class="font-label">起始月份</label>
+                <input
+                  type="range"
+                  class="period-month-slider custom-input"
+                  id="start-month"
+                  name="start-month"
+                  min="1"
+                  max="12"
+                />
+                <div id="start-month-value"></div>
+              </div>
+            </div>
+            <div class="group">
+              <div class="year-group">
+                <label for="end-year" class="font-label">結束年份</label>
+                <div class="custom-select">
+                  <select name="end-year" id="end-year" type="number"></select>
+                </div>
+              </div>
+              <div class="month-group">
+                <label for="end-month" class="font-label">結束月份</label>
+                <input
+                  type="range"
+                  class="period-month-slider custom-input"
+                  id="end-month"
+                  name="end-month"
+                  min="1"
+                  max="12"
+                />
+                <div id="end-month-value"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="step-indicator">
+      <div class="step-indicator-wrapper">
+        <div class="step-indicator-bar"></div>
+        <div id="step-1" class="step-indicator-circle">∨</div>
+        <div id="step-2" class="step-indicator-circle">∨</div>
+        <div id="step-3" class="step-indicator-circle">∨</div>
+      </div>
+    </footer>
+    <script src="./app.js"></script>
+  </body>
+</html>
